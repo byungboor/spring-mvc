@@ -9,9 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan(basePackages = {
         "x3.benjamin.playground.apiserver.repository",
-        "" //TODO - 05 - Bean 클래스를 작성했으니 적절하게 ComponentScan 의 값을 바꾸면 됩니다.
-        	// TODO - 05 - Beanクラスを作成したので、適切なComponentScanの値を変更するとします。
-
+        "x3.benjamin.playground.apiserver.service"
 })
 public class RootApplicationContextConfig {
 }
