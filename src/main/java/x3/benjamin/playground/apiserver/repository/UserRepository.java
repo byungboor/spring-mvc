@@ -12,6 +12,7 @@ import java.util.List;
 @Repository
 public class UserRepository {
 
+
 	public List<User> findAll() {
 
 		System.out.println("Repository Layer - users method is called");
