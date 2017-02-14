@@ -33,7 +33,6 @@ public class UserRepository {
 
     public List<Long> saveAll(List<User> users) {
         return users.stream()
-
                 .map(user -> {
                     userMap.put(user.getUserId(), user);
                     return user.getUserId();
