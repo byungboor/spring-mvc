@@ -20,7 +20,6 @@ import java.util.List;
 @EnableWebMvc
 @ComponentScan(basePackages = { "x3.benjamin.playground.apiserver.controller" })
 public class ServletContextConfig extends WebMvcConfigurerAdapter {
-
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 		converters.add(jackson2HttpMessageConverter());
