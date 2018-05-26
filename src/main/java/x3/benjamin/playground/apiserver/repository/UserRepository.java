@@ -3,6 +3,7 @@ package x3.benjamin.playground.apiserver.repository;
 import x3.benjamin.playground.apiserver.model.User;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +12,6 @@ import java.util.List;
  */
 @Repository
 public class UserRepository {
-
-
 	public List<User> findAll() {
 
 		System.out.println("Repository Layer - users method is called");
