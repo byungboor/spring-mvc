@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * Created by benjamin on 2017. 2. 14..
  */
+//TODO 01- 적절한 Stereotype Annotation 을 선언한다.
 public class UserRepository {
 
     @PostConstruct
