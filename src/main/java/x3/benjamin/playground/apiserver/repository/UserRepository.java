@@ -10,7 +10,6 @@ import java.util.List;
 /**
  * Created by benjamin on 2017. 2. 14..
  */
-@Repository
 public class UserRepository {
 
     @PostConstruct
