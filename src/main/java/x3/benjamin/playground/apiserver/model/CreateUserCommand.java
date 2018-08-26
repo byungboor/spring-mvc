@@ -1,7 +1,17 @@
 package x3.benjamin.playground.apiserver.model;
 
+<<<<<<< HEAD
 
 
+=======
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+>>>>>>> todo 실습 마킹
 public class CreateUserCommand {
 
     private Long id;
@@ -11,6 +21,7 @@ public class CreateUserCommand {
     private CreateUserCommand() {
 
     }
+<<<<<<< HEAD
 
 	public Long getId() {
 		return id;
@@ -35,4 +46,6 @@ public class CreateUserCommand {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+=======
+>>>>>>> todo 실습 마킹
 }

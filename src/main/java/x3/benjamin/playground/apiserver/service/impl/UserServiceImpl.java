@@ -9,6 +9,7 @@ import x3.benjamin.playground.apiserver.repository.UserRepository;
 import x3.benjamin.playground.apiserver.service.UserService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import java.util.stream.Collectors;
 
@@ -45,5 +46,8 @@ public class UserServiceImpl implements UserService {
     public User getUserById(Long userId) {
         return userRepository.findOne(userId);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> todo 실습 마킹
 }
