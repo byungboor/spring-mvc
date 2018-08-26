@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"x3.benjamin.playground.apiserver.controller"})
+@ComponentScan(basePackages = {""})
+//TODO - 6 - Bean 클래스를 작성했으니 적절하게 ComponentScan 의 값을 바꾸면 됩니다.
 public class ServletContextConfig {
 }
