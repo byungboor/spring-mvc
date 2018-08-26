@@ -37,4 +37,5 @@ public class ServletContextConfig extends WebMvcConfigurerAdapter {
 		jsonConverter.setObjectMapper(objectMapper);
 		return jsonConverter;
 	}
+
 }
