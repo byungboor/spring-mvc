@@ -25,21 +25,17 @@ public class UserController {
         return userService.getUsers();
     }
 
-
-    //TODO - 1 POST method 로 RequestMapping 하세요.
-    public List<CreateUserDto> createUsers( String component, //TODO - 2 HTTP Header 값을 받으세요
-                                            List<CreateUserCommand> createUserCommands //TODO - 3 POST 의 Body 를 받으세요
-    ) {
+    @RequestMapping(method = RequestMethod.POST)
+    public List<CreateUserDto> createUsers(@RequestHeader("x-msa-component") String component,
+                                           @RequestBody List<CreateUserCommand> createUserCommands) {
 
         System.out.println("component : " + component);
 
         return userService.createUsers(createUserCommands);
     }
 
-    //TODO - 4 GET method 로 RequestMapping 하세요. API spec 의 path 를 잘 보세요
-    public User getUserById(
-            Long userId //TODO - 어떻게 서로 맵핑할까요?
-    ) {
+    @RequestMapping(method = RequestMethod.GET, path = "/{userId}")
+    public User getUserById(@PathVariable(name = "userId") Long userId) {
         return userService.getUserById(userId);
     }
 }
