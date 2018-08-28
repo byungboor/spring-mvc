@@ -3,7 +3,9 @@ package x3.benjamin.playground.apiserver.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import x3.benjamin.playground.apiserver.model.User;
 import x3.benjamin.playground.apiserver.service.UserService;
 
@@ -12,6 +14,7 @@ import java.util.List;
 /**
  * Created by benjamin on 2017. 2. 14..
  */
+// TODO - 06 설명
 @Controller
 @RequestMapping("/users")
 public class UserController {

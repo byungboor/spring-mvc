@@ -9,8 +9,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.http.converter.xml.MarshallingHttpMessageConverter;
-import org.springframework.oxm.xstream.XStreamMarshaller;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
@@ -62,6 +60,7 @@ public class ServletContextConfig extends WebMvcConfigurerAdapter {
         return intercepter;
     }
 
+    // TODO - 01 설명
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
         configurer.favorPathExtension(false);
@@ -71,6 +70,7 @@ public class ServletContextConfig extends WebMvcConfigurerAdapter {
         super.configureContentNegotiation(configurer);
     }
 
+    // TODO - 04 설명
     @Bean
     public ViewResolver contentNegotiatingViewResolver(ContentNegotiationManager manager) {
         ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
@@ -83,6 +83,7 @@ public class ServletContextConfig extends WebMvcConfigurerAdapter {
         return resolver;
     }
 
+    // TODO - 05 설명
     @Bean
     public Map<String, MediaType> supportedMediaType() {
         Map<String, MediaType> mediaTypeMap = new HashMap<>();
@@ -91,11 +92,13 @@ public class ServletContextConfig extends WebMvcConfigurerAdapter {
         return mediaTypeMap;
     }
 
+    // TODO - 02 설명
     @Bean
     public JsonViewResolver jsonViewResolver() {
         return new JsonViewResolver();
     }
 
+    // TODO - 03 설명
     @Bean
     public XmlViewResolver xmlViewResolver() {
         return new XmlViewResolver();
