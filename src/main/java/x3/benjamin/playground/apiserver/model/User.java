@@ -1,15 +1,43 @@
 package x3.benjamin.playground.apiserver.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
 /**
  * Created by benjamin on 2017. 2. 14..
  */
-@Data
-@AllArgsConstructor
+
 public class User {
-    private Long userId;
-    private String name;
-    private String address;
+	private Long userId;
+	private String name;
+	private String address;
+
+	public User(Long userId, String name, String address) {
+		this.setUserId(userId);
+		this.setName(name);
+		this.setAddress(address);
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	
 }

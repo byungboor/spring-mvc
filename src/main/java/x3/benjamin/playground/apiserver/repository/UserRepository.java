@@ -1,6 +1,5 @@
 package x3.benjamin.playground.apiserver.repository;
 
-import org.springframework.stereotype.Repository;
 import x3.benjamin.playground.apiserver.model.User;
 
 import javax.annotation.PostConstruct;
@@ -11,6 +10,7 @@ import java.util.List;
  * Created by benjamin on 2017. 2. 14..
  */
 //TODO 01- 적절한 Stereotype Annotation 을 선언한다.
+//TODO 01- 適切なStereotype Annotationを宣言する。
 public class UserRepository {
 
     @PostConstruct
