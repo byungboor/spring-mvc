@@ -13,14 +13,18 @@ import java.util.List;
  * Created by benjamin on 2017. 2. 14..
  */
 // TODO - 03. 적절한 Sterotype annotation 을 사용하여 Bean 선언을 합니다.
+// TODO - 03. 適切なSterotype annotationを使用してBean宣言をします。
 // 단. annotation 에 따라서 Api method signature 가 다를수 있으니 아래 getUsers 메소드의 형태를 보고 적절히 잘 판단하세요.
+// ただし。annotationによってApi method signatureが異なる場合がありますので、下getUsersメソッドの形を見て適切によく判断してください。
 public class UserController {
 
     @Autowired
     private UserService userService;
 
     // TODO - 04. 클라이언트에서 요청하는 URL에 맞게 RequestMapping 을 선언하세요.
+    // TODO - 04. 04クライアントから要求されたURLに合わせてRequestMappingを宣言します。
     //  path 는 '/users' 이고 http method 는 GET 입니다.
+    //  pathは、「/ users」であり、http methodはGETです。
     public List<User> getUsers() {
         System.out.println("Controller Layer - users method is called");
         return userService.getUsers();
