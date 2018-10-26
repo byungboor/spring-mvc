@@ -1,7 +1,7 @@
 package x3.benjamin.playground.apiserver.repository;
 
-import x3.benjamin.playground.apiserver.model.User;
 import org.springframework.stereotype.Repository;
+import x3.benjamin.playground.apiserver.model.User;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -16,10 +16,7 @@ import java.util.stream.Collectors;
 @Repository
 public class UserRepository {
 
-<<<<<<< HEAD
 
-=======
->>>>>>> todo 실습 마킹
     private Map<Long, User> userMap = new ConcurrentHashMap<>();
 
     @PostConstruct
@@ -37,15 +34,11 @@ public class UserRepository {
 
     public List<Long> saveAll(List<User> users) {
         return users.stream()
-<<<<<<< HEAD
-=======
-
->>>>>>> todo 실습 마킹
-                .map(user -> {
-                    userMap.put(user.getUserId(), user);
-                    return user.getUserId();
-                })
-                .collect(Collectors.toList());
+                    .map(user -> {
+                        userMap.put(user.getUserId(), user);
+                        return user.getUserId();
+                    })
+                    .collect(Collectors.toList());
     }
 
     public User findOne(Long userId) {

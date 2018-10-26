@@ -1,9 +1,5 @@
 package x3.benjamin.playground.apiserver.service;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> todo 실습 마킹
 import x3.benjamin.playground.apiserver.model.CreateUserCommand;
 import x3.benjamin.playground.apiserver.model.CreateUserDto;
 import x3.benjamin.playground.apiserver.model.User;
@@ -20,8 +16,4 @@ public interface UserService {
     List<CreateUserDto> createUsers(List<CreateUserCommand> createUserCommands);
 
     User getUserById(Long userId);
-<<<<<<< HEAD
-
-=======
->>>>>>> todo 실습 마킹
 }

@@ -46,8 +46,4 @@ public class UserServiceImpl implements UserService {
     public User getUserById(Long userId) {
         return userRepository.findOne(userId);
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> todo 실습 마킹
 }
