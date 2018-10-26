@@ -1,15 +1,10 @@
 package x3.benjamin.playground.apiserver.model;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
-import javax.validation.constraints.NotNull;
-
 public class UpdateUserCommand {
 
-    //TODO 2
-    @NotNull(message = "name should not be null")
+    //TODO - 1 : annotation 이 없어졌음.
+    //TODO - 1 : annotationがなくなった。
     private String name;
-    @NotEmpty(message = "address should not be empty")
     private String address;
 
     public String getName() {
@@ -27,7 +22,7 @@ public class UpdateUserCommand {
     public void setAddress(String address) {
         this.address = address;
     }
-    
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("UpdateUserCommand{");

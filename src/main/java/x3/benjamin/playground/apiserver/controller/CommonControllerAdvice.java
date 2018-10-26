@@ -27,8 +27,6 @@ public class CommonControllerAdvice {
         return new ResponseEntity(errorMessageDto, headers, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-
-    //TODO 6
     @ExceptionHandler(ApiValidationException.class)
     @ResponseBody
     public ResponseEntity<Object> handleApiValidationException(ApiValidationException ex) {

@@ -2,6 +2,7 @@ package x3.benjamin.playground.apiserver.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import x3.benjamin.playground.apiserver.exception.ApiValidationException;
 import x3.benjamin.playground.apiserver.model.CreateUserCommand;
@@ -9,6 +10,7 @@ import x3.benjamin.playground.apiserver.model.CreateUserDto;
 import x3.benjamin.playground.apiserver.model.UpdateUserCommand;
 import x3.benjamin.playground.apiserver.model.UpdateUserDto;
 import x3.benjamin.playground.apiserver.model.User;
+import x3.benjamin.playground.apiserver.model.validator.UpdateUserCommandValidator;
 import x3.benjamin.playground.apiserver.service.UserService;
 
 import javax.validation.Valid;
@@ -24,6 +26,10 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    //TODO - 5
+    @Autowired
+    private UpdateUserCommandValidator updateUserCommandValidator;
 
     @RequestMapping(method = RequestMethod.GET)
     public List<User> getUsers() {
@@ -45,15 +51,11 @@ public class UserController {
         return userService.getUserById(userId);
     }
 
-    //TODO - 1
     @RequestMapping(method = RequestMethod.PUT, path = "/{userId}")
     public UpdateUserDto updateUserById(@PathVariable(name = "userId") Long userId,
-                                        //TODO 3
                                         @RequestBody @Valid UpdateUserCommand updateUserCommand,
-                                        //TODO 4
                                         BindingResult bindingResult) {
 
-        //TODO 5
         if (bindingResult.hasErrors()) {
             StringJoiner errorJoiner = new StringJoiner(" | ");
             bindingResult.getAllErrors().stream()
@@ -74,5 +76,13 @@ public class UserController {
 
         return new UpdateUserDto(userId);
     }
+
+
+    //TODO - 6
+    @InitBinder
+    public void dataBinding(WebDataBinder binder) {
+        binder.addValidators(updateUserCommandValidator);
+    }
+
 
 }

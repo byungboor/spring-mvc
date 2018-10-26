@@ -19,7 +19,8 @@ import java.util.List;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"x3.benjamin.playground.apiserver.controller"})
+//TODO 2-1
+@ComponentScan(basePackages = {"x3.benjamin.playground.apiserver.controller", "x3.benjamin.playground.apiserver.model.validator"})
 public class ServletContextConfig extends WebMvcConfigurerAdapter {
 
     @Override
