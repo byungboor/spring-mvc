@@ -45,4 +45,13 @@ public class User {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("User{");
+        sb.append("userId=").append(userId);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", address='").append(address).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

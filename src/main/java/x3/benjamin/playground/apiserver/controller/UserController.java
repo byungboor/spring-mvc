@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import x3.benjamin.playground.apiserver.exception.ApiValidationException;
 import x3.benjamin.playground.apiserver.model.CreateUserCommand;
 import x3.benjamin.playground.apiserver.model.CreateUserDto;
@@ -33,7 +34,7 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(method = RequestMethod.GET)
-
+    @ResponseBody
     public List<User> getUsers() {
         System.out.println("Controller Layer - users method is called");
         return userService.getUsers();
