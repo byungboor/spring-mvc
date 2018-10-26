@@ -29,16 +29,13 @@ public class RootApplicationContextConfig {
         return bean;
     }
 
-    // TODO 1.
     @Bean
     public MessageSourceAccessor messageSourceAccessor() {
 
         ResourceBundleMessageSource source = new ResourceBundleMessageSource();
         source.setDefaultEncoding("utf-8");
-        // TODO 2. check property files.
         source.setBasename("messages/message_bundle");
 
-        // TODO 3. constructor!
         MessageSourceAccessor accessor = new MessageSourceAccessor(source, Locale.US);
         return accessor;
     }

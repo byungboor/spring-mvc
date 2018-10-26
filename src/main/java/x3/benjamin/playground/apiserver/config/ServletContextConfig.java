@@ -6,6 +6,7 @@ import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -15,15 +16,20 @@ import org.springframework.web.servlet.config.annotation.ContentNegotiationConfi
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import x3.benjamin.playground.apiserver.intercepter.LoggingHandlerIntercepter;
 import x3.benjamin.playground.apiserver.viewresolver.JsonViewResolver;
 import x3.benjamin.playground.apiserver.viewresolver.XmlViewResolver;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -53,9 +59,11 @@ public class ServletContextConfig extends WebMvcConfigurerAdapter {
         return jsonConverter;
     }
 
+    //TODO 2
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loggingHandlerIntercepter());
+        registry.addInterceptor(localeChangeInterceptor());
         super.addInterceptors(registry);
     }
 
@@ -63,6 +71,28 @@ public class ServletContextConfig extends WebMvcConfigurerAdapter {
     public LoggingHandlerIntercepter loggingHandlerIntercepter() {
         LoggingHandlerIntercepter intercepter = new LoggingHandlerIntercepter();
         return intercepter;
+    }
+
+    //TODO 1
+    @Bean
+    public LocaleChangeInterceptor localeChangeInterceptor() {
+        LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
+        interceptor.setParamName("lang");
+        return interceptor;
+    }
+
+    //TODO 3
+    @Bean
+    public AcceptHeaderLocaleResolver localeResolver() {
+        AcceptHeaderLocaleResolver localeResolver = new AcceptHeaderLocaleResolver() {
+            @Override
+            public void setLocale(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+                LocaleContextHolder.setLocale(locale);
+            }
+        };
+
+        localeResolver.setDefaultLocale(Locale.US);
+        return localeResolver;
     }
 
     @Override
