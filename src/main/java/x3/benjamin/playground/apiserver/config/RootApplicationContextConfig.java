@@ -1,7 +1,12 @@
 package x3.benjamin.playground.apiserver.config;
 
+import org.springframework.beans.factory.config.PropertiesFactoryBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
+
+import java.io.IOException;
 
 /**
  * Created by benjamin on 2017. 2. 14..
@@ -12,4 +17,13 @@ import org.springframework.context.annotation.Configuration;
         "x3.benjamin.playground.apiserver.service"
 })
 public class RootApplicationContextConfig {
+
+    @Bean(name = "system")
+    public PropertiesFactoryBean propertiesFactoryBean() throws IOException {
+        PropertiesFactoryBean bean = new PropertiesFactoryBean();
+        bean.setLocation(new ClassPathResource("/properties/system.properties"));
+        bean.afterPropertiesSet();
+        return bean;
+    }
+
 }

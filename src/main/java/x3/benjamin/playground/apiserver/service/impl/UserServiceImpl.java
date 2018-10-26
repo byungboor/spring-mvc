@@ -1,6 +1,7 @@
 package x3.benjamin.playground.apiserver.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import x3.benjamin.playground.apiserver.model.CreateUserCommand;
 import x3.benjamin.playground.apiserver.model.CreateUserDto;
@@ -18,12 +19,16 @@ import java.util.stream.Collectors;
 @Service
 public class UserServiceImpl implements UserService {
 
+    @Value("#{system['api.log.host']}")
+    private String host;
+
+
     @Autowired
     private UserRepository userRepository;
 
     @Override
     public List<User> getUsers() {
-        System.out.println("Service Layer - users method is called");
+        System.out.println("Service Layer - users method is called. api.log.host=" + host);
         return userRepository.findAll();
     }
 
