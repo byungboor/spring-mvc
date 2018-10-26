@@ -1,8 +1,6 @@
 package x3.benjamin.playground.apiserver.model;
 
-import lombok.Getter;
 
-@Getter
 public class ErrorMessageDto {
 
     private String message;
@@ -11,5 +9,13 @@ public class ErrorMessageDto {
     public ErrorMessageDto(String message, Exception e) {
         this.message = message;
         this.clazzName = e.getClass().getCanonicalName();
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public String getClazzName() {
+        return clazzName;
     }
 }
