@@ -11,8 +11,6 @@ import x3.benjamin.playground.apiserver.service.UserService;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import java.util.stream.Collectors;
-
 
 /**
  * Created by benjamin on 2017. 2. 14..
@@ -33,17 +31,19 @@ public class UserServiceImpl implements UserService {
     public List<CreateUserDto> createUsers(List<CreateUserCommand> createUserCommands) {
         System.out.println("Service Layer - createUsers method is called");
         List<User> users = createUserCommands.stream()
-                .map(createUserCommand -> new User(createUserCommand.getId(), createUserCommand.getName(), createUserCommand.getAddress()))
-                .collect(Collectors.toList());
+                                             .map(createUserCommand -> new User(createUserCommand.getId(), createUserCommand.getName(),
+                                                                                createUserCommand.getAddress()))
+                                             .collect(Collectors.toList());
         List<Long> ids = userRepository.saveAll(users);
 
         return ids.stream()
-                .map(CreateUserDto::new)
-                .collect(Collectors.toList());
+                  .map(CreateUserDto::new)
+                  .collect(Collectors.toList());
     }
 
     @Override
     public User getUserById(Long userId) {
         return userRepository.findOne(userId);
     }
+
 }

@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 @Repository
 public class UserRepository {
 
-
     private Map<Long, User> userMap = new ConcurrentHashMap<>();
 
     @PostConstruct

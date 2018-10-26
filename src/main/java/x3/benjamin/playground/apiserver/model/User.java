@@ -1,43 +1,48 @@
 package x3.benjamin.playground.apiserver.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Created by benjamin on 2017. 2. 14..
  */
-
+@XmlRootElement(name = "user")
 public class User {
-	private Long userId;
-	private String name;
-	private String address;
+    private Long userId;
+    private String name;
+    private String address;
 
-	public User(Long userId, String name, String address) {
-		this.setUserId(userId);
-		this.setName(name);
-		this.setAddress(address);
-	}
+    public User() {
+    }
 
-	public Long getUserId() {
-		return userId;
-	}
+    public User(Long userId, String name, String address) {
+        this.setUserId(userId);
+        this.setName(name);
+        this.setAddress(address);
+    }
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
+    public Long getUserId() {
+        return userId;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	
-	
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+
 }
