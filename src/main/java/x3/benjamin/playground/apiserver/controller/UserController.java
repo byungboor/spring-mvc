@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import x3.benjamin.playground.apiserver.exception.ApiValidationException;
 import x3.benjamin.playground.apiserver.model.CreateUserCommand;
 import x3.benjamin.playground.apiserver.model.CreateUserDto;
+import x3.benjamin.playground.apiserver.model.CreateUserListCommand;
 import x3.benjamin.playground.apiserver.model.UpdateUserCommand;
 import x3.benjamin.playground.apiserver.model.UpdateUserDto;
 import x3.benjamin.playground.apiserver.model.User;
@@ -27,7 +28,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    //TODO - 5
     @Autowired
     private UpdateUserCommandValidator updateUserCommandValidator;
 
@@ -39,11 +39,11 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST)
     public List<CreateUserDto> createUsers(@RequestHeader("x-msa-component") String component,
-                                           @RequestBody List<CreateUserCommand> createUserCommands) {
+                                           @RequestBody @Valid CreateUserListCommand createUserListCommand) {
 
         System.out.println("component : " + component);
-
-        return userService.createUsers(createUserCommands);
+        
+        return userService.createUsers(createUserListCommand.getCreateUserCommands());
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{userId}")
@@ -77,8 +77,6 @@ public class UserController {
         return new UpdateUserDto(userId);
     }
 
-
-    //TODO - 6
     @InitBinder
     public void dataBinding(WebDataBinder binder) {
         binder.addValidators(updateUserCommandValidator);

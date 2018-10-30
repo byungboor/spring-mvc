@@ -2,8 +2,6 @@ package x3.benjamin.playground.apiserver.model;
 
 public class UpdateUserCommand {
 
-    //TODO - 1 : annotation 이 없어졌음.
-    //TODO - 1 : annotationがなくなった。
     private String name;
     private String address;
 

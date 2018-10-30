@@ -1,9 +1,11 @@
 package x3.benjamin.playground.apiserver.model;
 
+import javax.validation.constraints.NotNull;
 
 public class CreateUserCommand {
 
     private Long id;
+    @NotNull(message = "name should not be null")
     private String name;
     private String address;
 
