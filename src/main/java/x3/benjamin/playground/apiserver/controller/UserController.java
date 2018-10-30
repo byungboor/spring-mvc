@@ -11,6 +11,7 @@ import x3.benjamin.playground.apiserver.model.CreateUserListCommand;
 import x3.benjamin.playground.apiserver.model.UpdateUserCommand;
 import x3.benjamin.playground.apiserver.model.UpdateUserDto;
 import x3.benjamin.playground.apiserver.model.User;
+import x3.benjamin.playground.apiserver.model.validator.CreateUserListCommandValidator;
 import x3.benjamin.playground.apiserver.model.validator.UpdateUserCommandValidator;
 import x3.benjamin.playground.apiserver.service.UserService;
 
@@ -30,6 +31,9 @@ public class UserController {
 
     @Autowired
     private UpdateUserCommandValidator updateUserCommandValidator;
+    
+    @Autowired
+    private CreateUserListCommandValidator createUserListCommandValidator;
 
     @RequestMapping(method = RequestMethod.GET)
     public List<User> getUsers() {
@@ -39,9 +43,23 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST)
     public List<CreateUserDto> createUsers(@RequestHeader("x-msa-component") String component,
-                                           @RequestBody @Valid CreateUserListCommand createUserListCommand) {
+                                           @RequestBody @Valid CreateUserListCommand createUserListCommand,
+                                           BindingResult bindingResult) {
 
         System.out.println("component : " + component);
+        
+        if (bindingResult.hasErrors()) {
+            StringJoiner errorJoiner = new StringJoiner(" | ");
+            bindingResult.getAllErrors().stream()
+                         .map(error ->
+                                      new StringBuilder().append("ObjectName=").append(error.getObjectName())
+                                                         .append(",Message=").append(error.getDefaultMessage())
+                                                         .append(",code=").append(error.getCode())
+
+                             )
+                         .forEach(errorJoiner::add);
+            throw new ApiValidationException(errorJoiner.toString());
+        }
         
         return userService.createUsers(createUserListCommand.getCreateUserCommands());
     }
@@ -77,7 +95,7 @@ public class UserController {
         return new UpdateUserDto(userId);
     }
 
-    @InitBinder
+    @InitBinder("updateUserCommand")
     public void dataBinding(WebDataBinder binder) {
         binder.addValidators(updateUserCommandValidator);
     }
